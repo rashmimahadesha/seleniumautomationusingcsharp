@@ -11,9 +11,12 @@ public class GoogleTest
     [SetUp]
     public void Setup()
     {
-        driver = new ChromeDriver();
+        var options = new ChromeOptions();
+        options.AddArgument("--headless");
+        options.AddArgument("--no-sandbox");
+        options.AddArgument("--disable-dev-shm-usage");
 
-        driver.Manage().Window.Maximize();
+        driver = new ChromeDriver(options);
     }
 
     [Test]
